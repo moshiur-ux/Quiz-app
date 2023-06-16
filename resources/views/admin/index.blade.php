@@ -1,5 +1,8 @@
-@extends('backend.layouts.master')
+@include('backend.layouts.navbar')
 
-@section('content')
+@include('backend.layouts.sidebar')
+            
+             @include('backend.layouts.dashboard')
 
-@endsection
+         @include('backend.layouts.footer')
+        
