@@ -21,7 +21,7 @@
             
 
 
-      <form action="{{route('quiz.store')}}" method="POST">@csrf
+      <form action="{{route('question.store')}}" method="POST">@csrf
 
         <div class="module">
 
@@ -35,15 +35,42 @@
             <div class="module-body">
 
 
+<div class="controls-group">
+
+<label class="control-label">Choose Quiz</label>
+
+<div class="controls">
+    <select name="quiz" class="span8">
+        @foreach(App\Models\quiz::all() as $quiz)
+
+        <option value ="{{$quiz->id}}">
+        
+        {{$quiz->name}}
+
+
+        </option>
+
+
+        @endforeach
+
+
+</select>
+
+</div>
+
+</div>
+
+          
+
             <div class="controls-group">
 
-            <label class="control-label">Quiz name</label>
+            <label class="control-label" for="question">Question name</label>
 
             <div class="controls">
 
-            <input  type="text" name="name" class="span8" placeholder="Name of a quiz" value="{{old('name')}}">
+            <input  type="text" name="question" class="span8" placeholder="Name of a quiz" value="{{old('question')}}">
              
-                             @error('name')
+                             @error('question')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -51,22 +78,23 @@
   
 
 </div>
+<div class="controls-group">
 
-
-<div class="control-group">
-
-<label class="control-label">Quiz Description</label>
+<label class="control-label" for="options">options</label>
 
 <div class="controls">
 
-<textarea   name="description" class="span8" >
-{{old('description')}}
+@for($i=0;$i<4;$i++)
 
+<input  type="text" name="options[]" class="span7  @error('name') border-red @enderror" placeholder="options{{$i+1}}" required="">
+<input type="radio" name="correct_answer" value="{{$i}}">
+<span>Is correct answer</span>
 
-</textarea>
+@endfor
+
 </div>
  
-                 @error('description')
+                 @error('question')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -75,38 +103,22 @@
 
 </div>
 
-<div class="control-group">
-
-<label class="control-label">Minutes</label>
-<div class="controls">
-
-<input  type="text" name="minutes" class="span8" placeholder="How many minutes" value="{{old('name')}}">
-
-</div>
- 
-                 @error('minutes')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
 
 
-</div>
-
-<div class="controls">
+<div class="controls-group">
+    <div class="controls">
 
 <button type="submit" class="btn  btn-success">Submit</button>
 
-
 </div>
-
-
 
 </div>
 
 </div>
 
-        </div>
+</div>
+
+
 
 
 

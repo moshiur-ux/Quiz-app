@@ -23,3 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('quiz', App\Http\Controllers\QuizController::class);
 
+Route::resource('question', App\Http\Controllers\QuestionController::class);
