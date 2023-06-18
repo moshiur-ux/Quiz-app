@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|----------------------------------------------------------- ---------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('quiz', App\Http\Controllers\QuizController::class);
 
 Route::resource('question', App\Http\Controllers\QuestionController::class);
+Route::get('/quiz/{id}/question', [App\Http\Controllers\QuizController::class, 'question'])->name('quiz.question');

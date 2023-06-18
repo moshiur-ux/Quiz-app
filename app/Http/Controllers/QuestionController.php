@@ -47,9 +47,11 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request,string $id)
     {
-        //
+        $question =(new Question)->getQuestionById($id);
+        return view('backend.question.show',compact('question'));
+        
     }
 
     /**
@@ -57,7 +59,10 @@ class QuestionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $question=(new Question)->findQuestion($id);
+        return view('backend.question.edit',compact('question'));
+
+        
     }
 
     /**
@@ -65,7 +70,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data =$this->validateForm($request);
+        $question =(new Question)->updateQuestion($id,$request);
+        $answer=(new Answer)->updateAnswer($request,$question);
+        return redirect()->route('question.show',$id)->with('message','Question updated successfully!');
+
+
     }
 
     /**
@@ -73,7 +83,11 @@ class QuestionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        (new Answer)->deleteAnswer($id);
+        (new Question)->deleteQuestion($id);
+        return redirect()->route('question.index')->with('message','Question deleted successfully!');
+        
+        
     }
 
     public function validateForm($request)

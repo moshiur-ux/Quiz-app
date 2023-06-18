@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\quiz;
 use Illuminate\Http\Request;
 
@@ -74,13 +73,10 @@ class QuizController extends Controller
 
         //return redirect()->back()->with('message','Quiz updated Succesfully');
         
-
-
-
-
-        
     }
 
+
+ 
     /**
      * Remove the specified resource from storage.
      */
@@ -89,6 +85,16 @@ class QuizController extends Controller
         (new Quiz)->deleteQuiz($id);
 
        return redirect(route('quiz.index'))->with('message','Quiz deleted successfully'); 
+
+ 
+    }
+
+    public function question($id)
+    {
+        $quizzes= Quiz::with('questions')->where('id',$id)->get();
+        return view('backend.quiz.question',compact('quizzes'));
+        
+
 
 
     }

@@ -42,6 +42,14 @@
                               <td>{{$quiz->name}}</td>
                               <td>{{$quiz->description}}</td>
                               <td>{{$quiz->minutes}}</td>
+
+                              <td>
+                                <a href="{{route('quiz.question',[$quiz->id])}}">
+                                <button class="btn btn-primary" type="submit">View Question</button>
+                                </a>
+
+
+                              </td>
                               <td>
                                 
                               <a  href="{{route('quiz.edit',[$quiz->id])}}" >

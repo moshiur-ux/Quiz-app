@@ -42,9 +42,22 @@
                   <td>{{$question->question}}</td>
                   <td>{{$question->quiz?->name}}</td>
                   <td>{{date('F d,Y',strtotime($question->created_at))}}</td>
+
+                  <td> 
+
+                  <a  href="{{route('question.show',[$question->id])}}" >
+
+                              <button class="btn btn-primary" type="submit">view</button>
+
+                              </a>
+
+
+                  </td>
+
+
                   <td>
                     
-                  <a  href="{{route('quiz.edit',[$question->id])}}" >
+                  <a  href="{{route('question.edit',[$question->id])}}" >
 
                   <button class="btn btn-primary" type="submit">Edit</button>
 
@@ -54,7 +67,7 @@
 
                   <td> 
 
-                  <form id="delete-form-{{ $question->id }}" method="POST"  action="{{route('quiz.destroy',[$question->id])}}">@csrf
+                  <form id="delete-form-{{ $question->id }}" method="POST"  action="{{route('question.destroy',[$question->id])}}">@csrf
                     
                   {{method_field('DELETE')}}
 
@@ -102,7 +115,13 @@
                 </tbody>
               </table>
 
-            {{$questions->links()}}
+
+              <div class="pagination pagination-centred">
+
+              {{$questions->links()}}
+
+                </div>
+           
 
 
 

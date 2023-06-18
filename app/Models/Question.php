@@ -39,4 +39,34 @@ class Question extends Model
 
 
     }
+
+    public function getQuestionById($id)
+    {
+        return  \App\Models\Question::find($id);
+
+    } 
+
+    public function findQuestion($id)
+    {
+        return  \App\Models\Question::find($id);
+    }
+
+
+    public function updateQuestion($id,$data)
+    {
+        $question =Question::find($id);
+        $question->question=$data['question'];
+        $question->quiz_id =$data['quiz'];
+        $question->save();
+        return $question;
+
+    }
+
+    public function deleteQuestion($id)
+    {
+        \App\Models\Question::where('id',$id)->delete();
+
+    }
+
+
 }
