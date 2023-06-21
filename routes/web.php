@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |----------------------------------------------------------- ---------------
-| Web Routes
+| Web Routes 
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('quiz', App\Http\Controllers\QuizController::class);
+Route::resource('user', App\Http\Controllers\UserController::class);
 
 Route::resource('question', App\Http\Controllers\QuestionController::class);
 Route::get('/quiz/{id}/question', [App\Http\Controllers\QuizController::class, 'question'])->name('quiz.question');

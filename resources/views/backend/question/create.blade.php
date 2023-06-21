@@ -28,7 +28,7 @@
             <div class="module-head">
 
 
-              <h3>Create Quiz</h3>
+              <h3>Create Question</h3>
 
             </div>
 
@@ -37,7 +37,7 @@
 
 <div class="controls-group">
 
-<label class="control-label">Choose Quiz</label>
+<label class="control-label">Choose Question</label>
 
 <div class="controls">
     <select name="quiz" class="span8">

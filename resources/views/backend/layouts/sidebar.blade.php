@@ -21,6 +21,15 @@
                                     11</b> </a></li>
                                 
                             </ul>  
+
+                            <ul class="widget widget-menu unstyled">
+
+<li><a href="{{route('user.create')}}"><i class="menu-icon icon-bullhorn"></i>Create user </a>
+</li>
+<li><a href="{{route('user.index')}}"><i class="menu-icon icon-inbox"></i>View user <b class="label green pull-right">
+    11</b> </a></li>
+
+</ul>  
                             <!--/.widget-nav-->
                             
                             
